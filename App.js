@@ -44,6 +44,9 @@ export default function App() {
           addGoal={addGoalHandler}
         />
       </View>
+      <Text style={styles.indicationText}>
+        Presiona un cuadro para finalizar meta
+      </Text>
       <FlatList
         data={goals}
         keyExtractor={(item, index) => item.key}
@@ -73,6 +76,7 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   bottomView: {
+    paddingVertical: 5,
     padding: 20,
   },
   principalTitle: {
@@ -81,5 +85,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#FAFAFF",
     marginBottom: 15,
+  },
+  indicationText: {
+    textAlign: "center",
+    marginTop: 10,
   },
 });

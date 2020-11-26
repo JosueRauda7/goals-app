@@ -13,7 +13,7 @@ const GoalItem = (props) => {
       // activeOpacity={0.8}
       onPress={props.onDelete.bind(this, props.id)}>
       <View style={styles.textItem}>
-        <Text style={{ color: "white" }}>{props.goal}</Text>
+        <Text style={styles.text}>{props.goal}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -22,12 +22,14 @@ const GoalItem = (props) => {
 const styles = StyleSheet.create({
   textItem: {
     padding: 10,
+    paddingVertical: 18,
     backgroundColor: "#97CC04",
     borderColor: "white",
     borderWidth: 1,
     borderRadius: 5,
-    marginVertical: 10,
+    marginVertical: 5,
   },
+  text: { color: "white", fontWeight: "bold", fontSize: 18 },
 });
 
 export default GoalItem;
