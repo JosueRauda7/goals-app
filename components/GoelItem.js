@@ -22,7 +22,7 @@ const GoalItem = (props) => {
 const styles = StyleSheet.create({
   textItem: {
     padding: 10,
-    backgroundColor: "#00AFB5",
+    backgroundColor: "#97CC04",
     borderColor: "white",
     borderWidth: 1,
     borderRadius: 5,

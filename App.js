@@ -1,11 +1,12 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Button } from "react-native";
 import GoalInput from "./components/GoalInput";
 import GoalItem from "./components/GoelItem";
 
 export default function App() {
   const [goals, setGoals] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const addGoalHandler = (goal) => {
     if (goal.trim().length !== 0) {
@@ -16,8 +17,11 @@ export default function App() {
           value: goal,
         },
       ]);
+      setShowModal(false);
     }
   };
+
+  const closeModal = () => setShowModal(false);
 
   const removeGoalHandler = (goalId) => {
     setGoals((currentGoals) => {
@@ -29,7 +33,16 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.topView}>
         <Text style={styles.principalTitle}>GOALS APP</Text>
-        <GoalInput addGoal={addGoalHandler} />
+        <Button
+          color='#00A8E8'
+          title='Añadir meta'
+          onPress={() => setShowModal(true)}
+        />
+        <GoalInput
+          close={closeModal}
+          show={showModal}
+          addGoal={addGoalHandler}
+        />
       </View>
       <FlatList
         data={goals}
@@ -55,8 +68,9 @@ const styles = StyleSheet.create({
   },
   topView: {
     backgroundColor: "#71B340",
-    paddingTop: 50,
+    paddingTop: 60,
     padding: 40,
+    paddingBottom: 30,
   },
   bottomView: {
     padding: 20,
@@ -66,5 +80,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: "#FAFAFF",
+    marginBottom: 15,
   },
 });

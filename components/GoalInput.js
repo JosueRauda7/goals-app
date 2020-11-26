@@ -9,7 +9,7 @@ const GoalInput = (props) => {
   };
 
   return (
-    <Modal>
+    <Modal visible={props.show} animationType='slide'>
       <View style={styles.addView}>
         <TextInput
           placeholder='Ejemplo: Hacer ejercicio'
@@ -17,14 +17,26 @@ const GoalInput = (props) => {
           onChangeText={goalInput}
           value={enteredGoal}
         />
+        <View style={{ marginBottom: 10 }}>
+          <Button
+            color='#00A8E8'
+            title='AÑADIR'
+            onPress={() => {
+              props.addGoal(enteredGoal);
+              setEnteredGoal("");
+            }}
+          />
+        </View>
+        {/* <View style={{ position: "fixed" }}> */}
         <Button
-          color='#00A8E8'
-          title='ADD'
+          color='#FF495C'
+          title='CANCELAR'
           onPress={() => {
-            props.addGoal(enteredGoal);
+            props.close();
             setEnteredGoal("");
           }}
         />
+        {/* </View> */}
       </View>
     </Modal>
   );
@@ -32,17 +44,20 @@ const GoalInput = (props) => {
 
 const styles = StyleSheet.create({
   addView: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "center",
+    backgroundColor: "#FFFBFF",
+    // height: "100%",
+    padding: 20,
+    flex: 1,
   },
   textbox: {
-    borderBottomColor: "#FAFAFF",
+    borderBottomColor: "#0A0908",
     borderBottomWidth: 1,
     fontSize: 15,
     padding: 5,
-    color: "#FAFAFF",
-    width: "80%",
+    color: "#0A0908",
+    width: "100%",
+    marginBottom: 20,
   },
 });
 
